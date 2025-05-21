@@ -8,7 +8,7 @@ public class HTMLManager {
          throw new IllegalArgumentException("HTML queue annot be empty null");
       }
       
-      Queue<HTMLTag> tags = new LinkedList<>();
+      tags = new LinkedList<>();
       while(!html.isEmpty()) {
          tags.add(html.remove());
       }
@@ -16,6 +16,17 @@ public class HTMLManager {
    
    public Queue<HTMLTag> getTags() {
       return tags;
+   }
+   
+   public String toString() {
+      String html = "";
+      int size = tags.size();
+      for(int i = 0; i < size; i++) {
+         HTMLTag element = tags.remove();
+         html += element.toString();
+         tags.add(element);
+      }
+      return html;
    }
    
 }
